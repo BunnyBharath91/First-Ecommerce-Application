@@ -36,6 +36,7 @@
   .cart-item-details-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-grow: 1;
   }
 }
@@ -98,10 +99,15 @@
     margin-right: 16px;
   }
 }
-
 .total-price-remove-container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+}
+@media screen and (min-width: 768px) {
+  .total-price-remove-container {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .cart-total-price {
@@ -121,6 +127,7 @@
 }
 
 .remove-button {
+  width: 50px;
   background-color: transparent;
   color: #334155;
   font-family: 'Roboto';

@@ -1,7 +1,8 @@
-import './index.css'
+import {withRouter} from 'react-router-dom'
 import CartContext from '../../context/CartContext'
+import './index.css'
 
-const CartSummary = () => (
+const CartSummary = props => (
   <CartContext.Consumer>
     {value => {
       const {cartList} = value
@@ -11,6 +12,11 @@ const CartSummary = () => (
         0,
       )
 
+      const onCheckout = () => {
+        const {history} = props
+        history.replace('/thankyou')
+      }
+
       return (
         <div className="cart-summary-container">
           <h1 className="cart-summary-heading">
@@ -19,7 +25,11 @@ const CartSummary = () => (
           <p className="cart-summary-description">
             {cartList.length} items in cart
           </p>
-          <button type="button" className="checkout-button">
+          <button
+            type="button"
+            className="checkout-button"
+            onClick={onCheckout}
+          >
             Checkout
           </button>
         </div>
@@ -28,4 +38,4 @@ const CartSummary = () => (
   </CartContext.Consumer>
 )
 
-export default CartSummary
+export default withRouter(CartSummary)
